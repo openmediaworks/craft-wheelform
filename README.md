@@ -278,6 +278,16 @@ Advanced templating:
 </form>
 ```
 
+If you need all available variables, you can use this example {% default %} instead of the above one:
+
+```twig
+            {% default %}
+                <div class="wf-group{% if field.containerClass is defined %} {{ field.containerClass|lower }}{% endif %}">
+                <label class="wf-label" for="{{ field.fieldid|lower }}">{{ field.label }}</label>
+                <input type="text" id="{{ field.fieldid|lower }}" class="wf-field{% if field.fieldClass is defined %} {{ field.fieldClass|lower }}{% endif %}" name="{{ field.name }}" value="{{ field.value }}" {% if field.required == 1 %}required="required"{% endif %} {% if field.placeholder == 1 %}placeholder="{{ field.placeholder }}"{% endif %}>
+                </div>
+```
+
 If you want to stick to HTML and not use the variables:
 
 ```twig
